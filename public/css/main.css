@@ -1,0 +1,291 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*:before, *:after {
+    box-sizing: border-box;
+}
+
+:root {
+    --def-font: #707070;
+    --def-blue: #007bff;
+    --def-blue-hover: #2F90FF;
+}
+
+html, body {
+    /*font-size: 62.5%;*/
+    position: relative;
+    height: 100%;
+}
+
+body {
+    max-width: 1140px;
+    margin: 0 auto;
+    font-family: 'Lato', sans-serif;
+    /*font-size: 1.6rem;*/
+    color: #707070;
+    background-image: url("../img/dust_scratches.png");
+}
+
+button:focus {outline: 0;}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+/** BOOTSTRAP OVERRIDES **/
+
+/** END OF BOOTSTRAP OVERRIDES **/
+
+#main {
+    min-height: 100vh;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.brand {
+    color: var(--def-blue) !important;
+}
+
+.top-search-form {
+    position: relative;
+}
+
+.search-btn {
+    border: none;
+    position: absolute;
+    right: 10px;
+    bottom: 3px;
+    font-size: 20px;
+    color: rgb(127, 127, 143);
+    background: none;
+}
+
+.main-page-section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#top-section {
+    margin-top: 10px;
+}
+
+.top-main-image {
+    height: 400px;
+    background-image: url("../img/main-image.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.top-main-text {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 300;
+}
+
+#middle-text-section {
+    margin-top: 30px;
+    font-size: 18px;
+    text-align: justify;
+}
+
+#top-rated-section {
+    margin-top: 30px;
+}
+
+.main-page-top-rated {
+    margin-bottom: 20px;
+}
+
+.main-page-top-rated-img {
+    width: 350px;
+    height: 200px;
+}
+
+.main-page-top-rated-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.main-page-user-info {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--def-font);
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.main-page-user-name {
+    margin-left: 5px;
+}
+
+.art-grade {
+    margin-left: auto;
+    color: gold;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+#bottom-section {
+    margin-top: 30px;
+    padding-bottom: 30px;
+}
+
+.main-page-info {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.main-page-info i {
+    font-size: 160px;
+    color: #65a1d0;
+}
+
+.justify-paragraph {
+    text-align: justify;
+}
+
+.justify-paragraph p {
+    font-size: 18px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+}
+
+.footer-description {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fa-heart {
+    color: red;
+}
+
+.footer-socials {
+    font-size: 30px;
+    display: flex;
+    cursor: pointer;
+}
+
+.footer-social-facebook {
+    color: #3b5998;
+}
+
+.footer-social-instagram {
+    color: #f56040;
+    margin-left: 10px;
+}
+
+#login-section {
+    margin-top: 30px;
+}
+
+.login-panel {
+    border: 1px solid var(--def-font);
+    border-radius: 7px;
+    margin: 0 auto;
+    width: 400px;
+    height: 600px;
+    text-align: center;
+    background-color: #FAFAFA;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.login-panel h1 {
+    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    letter-spacing: 0.5px;
+}
+
+.login-panel input[type="text"], input[type="password"] {
+    width: 80%;
+    border: none;
+    border-bottom: 1px solid var(--def-font);
+    margin-bottom: 40px;
+    background-color: transparent;
+    padding: 8px;
+}
+
+.login-panel input[type="text"]:focus, input[type="password"]:focus {
+    border-bottom: 1px solid var(--def-blue);
+}
+
+.login-panel input[type="submit"] {
+    width: 80%;
+    border-radius: 25px;
+    height: 40px;
+    background-color: var(--def-blue);
+    border: none;
+    font-size: 26px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.login-panel input[type="submit"]:hover {
+    background-color: var(--def-blue-hover);
+}
+
+.login-with-socials {
+    margin-top: 50px;
+}
+
+.login-with-socials .fa-facebook {
+    margin-top: 10px;
+    font-size: 50px;
+    color: #3b5998;
+    cursor: pointer;
+}
+
+.login-with-socials .fa-facebook:hover {
+    color: #5777C1;
+}
+
+.no-account {
+    margin-top: 40px;
+}
+
+input::placeholder {
+    font-family: "FontAwesome", 'Poppins', sans-serif;
+}
+
+.user-avatar-logged-in {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-avatar-logged-in > .user-avatar-menu {
+    min-width: 60px !important;
+    text-align: center;
+    height: 60px;
+    left: auto;
+    right: 0;
+}
