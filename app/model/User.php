@@ -5,6 +5,8 @@ require '../includes/utils_inc.php';
 class User extends Model {
     private $login;
     private $password;
+    private $firstName;
+    private $avatar;
 
     public function __construct($login, $password)
     {
@@ -20,23 +22,23 @@ class User extends Model {
         $result = $query->fetch(PDO::FETCH_ASSOC);
         if ($result) {
             $checkPassword = password_verify($this->password, $result['password']);
-
+            session_start();
             if ($checkPassword) {
-                session_start();
+                unset($_SESSION['loginFailed']);
                 $_SESSION['id'] = $result['id'];
                 $_SESSION['login'] = $result['login'];
-                header('Location: http://localhost/your-view/');
+                $this->firstName = $result['first_name'];
+                header('Location: ' . HOST);
             }
             else
-                //todo add header
-                echo 'wrong';
+                $_SESSION['loginFailed'] = true;
+                header('Location: ' . HOST . 'login');
         }
+        $_SESSION['loginFailed'] = true;
+        header('Location: ' . HOST . 'login');
+    }
 
-
-
-
-
-
-
+    public function getFirstName() {
+        return $this->firstName;
     }
 }

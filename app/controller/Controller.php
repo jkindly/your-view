@@ -14,6 +14,7 @@ class Controller
     public function __construct() {
         $this->addRoute('/', 'home.phtml', 'Your view - strona główna');
         $this->addRoute('/login', 'login.phtml', 'Zaloguj się');
+        $this->addRoute('/settings', 'user_settings.phtml', 'Ustawienia konta');
     }
 
     public function addRoute($uri, $view, $pageTitle) {

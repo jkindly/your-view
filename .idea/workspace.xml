@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2bd8f287-ba7b-48bc-95db-747e101b4650" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="2bd8f287-ba7b-48bc-95db-747e101b4650" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/includes/not_logged_in_top_content_inc.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/view/user_settings.phtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/default_avatar.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/your-view.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/your-view.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/defines.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/defines.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/includes/logged_in_top_content_inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/includes/logged_in_top_content_inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/includes/not_logged_in_top_content_inc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/includes/top_content_inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/includes/top_content_inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/scripts/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/scripts/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/home.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/login.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/login.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,14 +56,34 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1TwVXG2vnDewsSQ7mobrBstGpvk" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -55,18 +95,6 @@
       <recent name="D:\xampp\htdocs\your-view\img" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager">
     <configuration name="index.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/your-view/public/index.php" useBuiltInWebServerPort="true">
       <method v="2" />
@@ -76,6 +104,18 @@
         <item itemvalue="JavaScript Debug.index.php" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -98,10 +138,43 @@
       <workItem from="1575811862750" duration="1553000" />
       <workItem from="1576168519903" duration="6131000" />
       <workItem from="1576262303499" duration="10603000" />
+      <workItem from="1576345043498" duration="6924000" />
+      <workItem from="1576530830992" duration="7053000" />
+      <workItem from="1576698817365" duration="53000" />
+      <workItem from="1576700319343" duration="3985000" />
+      <workItem from="1576873465236" duration="597000" />
+      <workItem from="1576959461052" duration="641000" />
+      <workItem from="1577016851389" duration="2318000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="651" y="162" key="SettingsEditor" timestamp="1576700712595">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="651" y="162" key="SettingsEditor/1982.0.1304.768/62.0.1858.1080@62.0.1858.1080" timestamp="1576700712595" />
+    <state x="2297" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1576705716568">
+      <screen x="1982" y="0" width="1304" height="768" />
+    </state>
+    <state x="2297" y="89" width="672" height="678" key="search.everywhere.popup/1982.0.1304.768/62.0.1858.1080@1982.0.1304.768" timestamp="1576705716568" />
   </component>
 </project>

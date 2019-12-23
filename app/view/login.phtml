@@ -1,5 +1,7 @@
-<?php session_start();
-if (isset($_SESSION['id'])) header('Location: http://localhost/your-view/');
+<?php
+if (session_status() == PHP_SESSION_NONE)
+    session_start();
+if (isset($_SESSION['id'])) header('Location: ' . HOST);
 require DIR_PATH . DS . 'includes' . DS . 'top_content_inc.php';?>
 
 
@@ -9,9 +11,12 @@ require DIR_PATH . DS . 'includes' . DS . 'top_content_inc.php';?>
             <div class="col-lg-12">
                 <div class="login-panel">
                     <h1>Zaloguj się</h1>
-                    <form action="http://localhost/your-view/app/scripts/login.php" method="post">
+                    <form action="<?= HOST ?>app/scripts/login.php" method="post">
                         <input name="login" type="text" placeholder="&#xF007; Wpisz swój login"><br>
                         <input name="password" type="password" placeholder="&#xf023; Wpisz swoje hasło"><br>
+                        <?php if (isset($_SESSION['loginFailed']))
+                            echo '<div class="failed-login-box">Nieprawidłowy login lub hasło</div>';
+                        ?>
                         <input name="submit" type="submit" value="Zaloguj">
                         <p class="forgot-password">Zapomniałeś hasła?</p>
                         <div class="login-with-socials">
