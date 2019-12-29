@@ -13,11 +13,44 @@ if (!USER_LOGGED_IN)
                     <h1>Ustawienia konta</h1>
                     <div class="user-avatar-settings mt-5">
                         <div class="user-avatar-over">
-                            <img id="user-avatar" src="<?= HOST . 'public/img/user-sample-avatar1.jpg' ?>" alt="">
+                            <img id="user-avatar" src="<?= $user->getAvatar(); ?>" alt="">
                             <div class="user-avatar-edit" title="Edytuj swoje zdjęcie">
                                 <i class="far fa-image"></i>
                             </div>
-                            <input type="file" id="imgupload" style="display:none"/>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default mt-1">
+                        <div class="panel-body">
+                            <input type="file" name="upload_image" id="upload_image" />
+                            <br />
+                            <div id="uploaded_image"></div>
+                        </div>
+                    </div>
+
+                    <div id="uploadimageModal" class="modal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Dostosuj zdjęcie</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-8 text-center">
+                                            <div id="image_demo" style="width:350px; margin-top:30px"></div>
+                                        </div>
+                                        <div class="col-md-4" style="padding-top:30px;">
+                                            <br />
+                                            <br />
+                                            <br/>
+                                            <button class="btn btn-success crop_image">Wybierz</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -25,5 +58,6 @@ if (!USER_LOGGED_IN)
         </div>
     </div>
 </section>
-
+    <script src="http://localhost/your-view/public/js/user_settings.js"></script>
+    <script src="http://localhost/your-view/public/js/croppie.js"></script>
 <?php require DIR_PATH . DS . 'includes' . DS . 'bottom_content_inc.php';

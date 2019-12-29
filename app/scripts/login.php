@@ -17,5 +17,7 @@ if (empty($login) || empty($password)) {
 }
 
 
-$user = new User($login, $password);
+$user = new User();
+$user->setLogin($login);
+$user->setPassword($password);
 $user->login();

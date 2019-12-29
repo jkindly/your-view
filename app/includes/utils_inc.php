@@ -6,7 +6,9 @@ function dump($toDump) {
     echo '</pre><br>';
 }
 
-function includeView($file, $variables) {
-    extract($variables);
+function includeView($file, $variables = null) {
+    if ($variables !== null)
+        extract($variables);
+
     include($file);
 }

@@ -1,5 +1,4 @@
 <?php
-
 function getColumns(...$columns) {
     $columnsToFetch = "";
 
@@ -36,8 +35,54 @@ function fetchWithAndWhere($table, array $where, ...$columns) {
     echo 'SELECT ' . $columnsToFetch . ' FROM ' . $table . ' WHERE ' . $whereAnd;
 }
 
-fetch('user', 'kolumna');
-echo '<br>';
-fetchWithWhere('user', 'id = ', 1, 'first_name', 'last_name');
-echo '<br>';
-fetchWithAndWhere('user', ['id'=>1, 'first_name'=>'jakub', 'last_name'=>'kozupa']);
+function update($table, $where = [], $arguments = [])
+{
+    $queryString = "UPDATE " . $table . ' SET ';
+
+    foreach ($arguments as $key => $value) {
+        if ($key !== array_key_last($arguments))
+            $queryString .= $key . ' = ' . "' $value ', ";
+        else
+            $queryString .= $key . ' = ' . "' $value '";
+    }
+
+    foreach ($where as $key => $item) {
+        $queryString .= ' WHERE ' . $key . ' = ' . $item;
+    }
+
+    echo $queryString;
+}
+
+function insert($table, $values=[]) {
+    $queryString = 'INSERT INTO ' . $table . ' (';
+
+    foreach ($values as $key => $value) {
+        if ($key !== array_key_last($values))
+            $queryString .= $key . ', ';
+        else
+            $queryString .= $key;
+    }
+
+    $queryString .= ') VALUES (';
+
+    foreach ($values as $key => $value) {
+        if ($key !== array_key_last($values))
+            $queryString .= $value . ', ';
+        else
+            $queryString .= $value;
+    }
+
+    $queryString .= ')';
+
+    echo $queryString;
+}
+
+insert('menu', ['name' => 'Home', 'display_order' => 1]);
+
+    //update('user', ['id' => 1], ['avatar_src' => 'tutaj adres obrazka', 'inny_arg' => 'asd']);
+
+//fetch('user', 'kolumna');
+//echo '<br>';
+//fetchWithWhere('user', 'id = ', 1, 'first_name', 'last_name');
+//echo '<br>';
+//fetchWithAndWhere('user', ['id'=>1, 'first_name'=>'jakub', 'last_name'=>'kozupa']);

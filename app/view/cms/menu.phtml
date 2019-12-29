@@ -1,0 +1,88 @@
+<?php
+require_once DIR_PATH . DS . 'includes' . DS . 'cms' . DS . 'cms_top_content_inc.phtml';
+require_once DIR_PATH . DS . 'model' . DS . 'cms' . DS . 'Menu.php';
+
+$menu = new Menu();
+
+$menuItems = $menu->fetchJoin();
+
+$primaryCatName = "";
+$sub1CatName = "";
+$sub2CatName = "";
+?>
+
+<h1 class="mb-4">Zarządzanie menu</h1>
+<form action="test_form.php" method="post">
+<ul class="cms-menu-items no-list-style">
+<?php
+    $menu = [];
+    foreach ($menuItems as $key => $menuItem):
+        if ($menuItem['primary_name'] != $primaryCatName): ?>
+            <li><?= $menuItem['primary_name']; ?></li>
+            <div class="cms-menu-item-extended">
+                <div class="cms-menu-item-extended-item">
+                    Nazwa <input type="text" value=" <?= $menuItem['primary_name']; ?>">
+                </div>
+                <div class="cms-menu-item-extended-item">
+                    URI <input type="text" value=" <?= $menuItem['primary_uri']; ?>">
+                </div>
+            </div>
+<?php
+            $primaryCatName = $menuItem['primary_name'];
+            $menu[$menuItem['primary_name']] = [
+                    'uri' => $menuItem['primary_uri']
+            ];
+
+        endif;
+        if ($menuItem['sub1_name'] != $sub1CatName):
+            if ($menuItem['sub1_name'] != ''): ?>
+                <ul class="cms-menu-items no-list-style">
+                    <li class="ml-3 mt-2"><?= $menuItem['sub1_name']; ?></li>
+                    <div class="cms-menu-item-extended ml-3">
+                        <div class="cms-menu-item-extended-item">
+                            Nazwa <input type="text" value=" <?= $menuItem['sub1_name']; ?>">
+                        </div>
+                        <div class="cms-menu-item-extended-item">
+                            URI <input type="text" value=" <?= $menuItem['sub1_uri']; ?>">
+                        </div>
+                    </div>
+                </ul>
+            <?php
+                $menu[$menuItem['primary_name']][$menuItem['sub1_name']] = [
+                    'uri' => $menuItem['sub1_uri']
+                ];
+            endif;
+            $sub1CatName = $menuItem['sub1_name'];
+        endif;
+        if ($menuItem['sub2_name'] != $sub2CatName):
+            if ($menuItem['sub2_name'] != ''): ?>
+                <ul class="cms-menu-items no-list-style">
+                    <li class="ml-5 mt-2"><?= $menuItem['sub2_name']; ?></li>
+                    <div class="cms-menu-item-extended ml-5">
+                        <div class="cms-menu-item-extended-item">
+                            Nazwa <input type="text" value=" <?= $menuItem['sub2_name']; ?>">
+                        </div>
+                        <div class="cms-menu-item-extended-item">
+                            URI <input type="text" value=" <?= $menuItem['sub2_uri']; ?>">
+                        </div>
+                    </div>
+                </ul>
+            <?php
+                $menu[$menuItem['primary_name']][$menuItem['sub1_name']][$menuItem['sub2_name']] = [
+                    'uri' => $menuItem['sub2_uri']
+                ];
+            endif;
+            $sub2CatName = $menuItem['sub2_name'];
+        endif;
+   endforeach;
+
+?>
+    <input type="submit" value="wyślij">
+</ul>
+    <input type="hidden" name="menu" value="<?php print base64_encode(serialize($menu))?>">
+</form>
+
+
+
+
+<?php require_once DIR_PATH . DS . 'includes' . DS . 'cms' . DS . 'cms_bottom_content_inc.phtml';?>

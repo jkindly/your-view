@@ -1,19 +1,13 @@
 <?php
 require 'Model.php';
-require '../includes/utils_inc.php';
+require_once DIR_PATH.DS.'includes'.DS.'utils_inc.php';
 
 class User extends Model {
     private $login;
     private $password;
     private $firstName;
     private $avatar;
-
-    public function __construct($login, $password)
-    {
-        parent::__construct();
-        $this->login = $login;
-        $this->password = $password;
-    }
+    private $role;
 
     public function login() {
         $query = $this->pdo->prepare('SELECT * FROM user WHERE login = :login;');
@@ -22,13 +16,12 @@ class User extends Model {
         $result = $query->fetch(PDO::FETCH_ASSOC);
         if ($result) {
             $checkPassword = password_verify($this->password, $result['password']);
-            session_start();
+            if (session_status() == PHP_SESSION_NONE)
+                session_start();
             if ($checkPassword) {
                 unset($_SESSION['loginFailed']);
+
                 $_SESSION['id'] = $result['id'];
-                $_SESSION['login'] = $result['login'];
-                $this->firstName = $result['first_name'];
-                header('Location: ' . HOST);
             }
             else
                 $_SESSION['loginFailed'] = true;
@@ -38,7 +31,35 @@ class User extends Model {
         header('Location: ' . HOST . 'login');
     }
 
+    public function setLogin($login) {
+        $this->login = $login;
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
+    }
+
+    public function getUser($id) {
+        $query = $this->pdo->prepare('SELECT first_name, avatar_src, role FROM user WHERE id = :id;');
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        if ($result) {
+            $this->firstName = $result['first_name'];
+            $this->avatar = $result['avatar_src'];
+            $this->role = $result['role'];
+        }
+    }
+
     public function getFirstName() {
         return $this->firstName;
+    }
+
+    public function getAvatar() {
+        return $this->avatar;
+    }
+
+    public function getRole() {
+        return $this->role;
     }
 }
