@@ -9,6 +9,7 @@ $menuItems = $menu->fetchJoin();
 $primaryCatName = "";
 $sub1CatName = "";
 $sub2CatName = "";
+
 ?>
 
 <h1 class="mb-4">Zarządzanie menu</h1>
@@ -18,13 +19,13 @@ $sub2CatName = "";
     $menu = [];
     foreach ($menuItems as $key => $menuItem):
         if ($menuItem['primary_name'] != $primaryCatName): ?>
-            <li><?= $menuItem['primary_name']; ?></li>
+            <li class="menu-list-item"><?= $menuItem['primary_name']; ?></li>
             <div class="cms-menu-item-extended">
                 <div class="cms-menu-item-extended-item">
-                    Nazwa <input type="text" value=" <?= $menuItem['primary_name']; ?>">
+                    Nazwa <input type="text" name="primary_name[]" value=" <?= $menuItem['primary_name']; ?>">
                 </div>
                 <div class="cms-menu-item-extended-item">
-                    URI <input type="text" value=" <?= $menuItem['primary_uri']; ?>">
+                    URI <input type="text" name="primary_uri[]" value=" <?= $menuItem['primary_uri']; ?>">
                 </div>
             </div>
 <?php
@@ -37,14 +38,15 @@ $sub2CatName = "";
         if ($menuItem['sub1_name'] != $sub1CatName):
             if ($menuItem['sub1_name'] != ''): ?>
                 <ul class="cms-menu-items no-list-style">
-                    <li class="ml-3 mt-2"><?= $menuItem['sub1_name']; ?></li>
+                    <li class="menu-list-item ml-3 mt-2"><?= $menuItem['sub1_name']; ?></li>
                     <div class="cms-menu-item-extended ml-3">
                         <div class="cms-menu-item-extended-item">
-                            Nazwa <input type="text" value=" <?= $menuItem['sub1_name']; ?>">
+                            Nazwa <input type="text" name="sub1_name[]" value=" <?= $menuItem['sub1_name']; ?>">
                         </div>
                         <div class="cms-menu-item-extended-item">
-                            URI <input type="text" value=" <?= $menuItem['sub1_uri']; ?>">
+                            URI <input type="text" name="sub1_uri[]" value=" <?= $menuItem['sub1_uri']; ?>">
                         </div>
+                        <input type="hidden" name="sub1_parent_index[]" value="<?= $menuItem['primary_id'] ?>">
                     </div>
                 </ul>
             <?php
@@ -57,14 +59,15 @@ $sub2CatName = "";
         if ($menuItem['sub2_name'] != $sub2CatName):
             if ($menuItem['sub2_name'] != ''): ?>
                 <ul class="cms-menu-items no-list-style">
-                    <li class="ml-5 mt-2"><?= $menuItem['sub2_name']; ?></li>
+                    <li class="menu-list-item ml-5 mt-2"><?= $menuItem['sub2_name']; ?></li>
                     <div class="cms-menu-item-extended ml-5">
                         <div class="cms-menu-item-extended-item">
-                            Nazwa <input type="text" value=" <?= $menuItem['sub2_name']; ?>">
+                            Nazwa <input type="text" name="sub2_name[]" value=" <?= $menuItem['sub2_name']; ?>">
                         </div>
                         <div class="cms-menu-item-extended-item">
-                            URI <input type="text" value=" <?= $menuItem['sub2_uri']; ?>">
+                            URI <input type="text" name="sub2_uri[]" value=" <?= $menuItem['sub2_uri']; ?>">
                         </div>
+                        <input type="hidden" name="sub2_parent_index[]" value="<?= $menuItem['sub1_id'] ?>">
                     </div>
                 </ul>
             <?php
@@ -77,12 +80,89 @@ $sub2CatName = "";
    endforeach;
 
 ?>
+    <div id="add-next-cat">Dodaj kategorię</div>
     <input type="submit" value="wyślij">
 </ul>
-    <input type="hidden" name="menu" value="<?php print base64_encode(serialize($menu))?>">
+<!--    <input type="hidden" name="menu" value="--><?php //print base64_encode(serialize($menu))?><!--">-->
 </form>
 
 
+<style>
+    #sortable1, #sortable2 {
+        border: 1px solid #eee;
+        width: 142px;
+        min-height: 20px;
+        list-style-type: none;
+        margin: 0;
+        padding: 5px 0 0 0;
+        margin-right: 10px;
+    }
+    #sortable1 li, #sortable2 li {
+        margin: 0 5px 5px 5px;
+        padding: 5px;
+        font-size: 1.2em;
+        width: 120px;
+    }
 
+    .cms-menu-edit {
+        width: 300px;
+    }
+
+    #sub-menu-level1 {
+        min-height: 30px;
+    }
+
+    #sub-menu-level2 {
+        min-height: 30px;
+    }
+</style>
+
+
+TESTY DRAGGABLE NAV
+
+<div class="cms-menu-edit">
+    <ul id="primary-menu" class="draggable-list border no-list-style">
+        <li>
+            Home
+            <ul id="sub-menu-level1" class="draggable-list ml-3 border no-list-style">
+                <li>
+                    First subcategory
+                    <ul id="sub-menu-level2" class="draggable-list ml-5 border no-list-style">
+                    </ul>
+                </li>
+                <li>
+                    Second subcategory
+                    <ul id="sub-menu-level2" class="draggable-list ml-5 border no-list-style">
+                        <li>Last item</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            Ranking
+            <ul id="sub-menu-level1" class="draggable-list ml-5 border no-list-style">
+                <ul id="sub-menu-level2" class="draggable-list ml-5 border no-list-style">
+                </ul>
+            </ul>
+        </li>
+        <li>
+            Kategorie
+            <ul id="sub-menu-level1" class="draggable-list ml-5 border no-list-style">
+                <ul id="sub-menu-level2" class="draggable-list ml-5 border no-list-style">
+                </ul>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<ul id="sortable1" class="connectedSortable border">
+    <li class="ui-state-default">Item 1</li>
+    <ul id="sortable2" class="connectedSortable ml-5 border">
+    </ul>
+    <li class="ui-state-default">Item 2</li>
+    <li class="ui-state-default">Item 3</li>
+    <li class="ui-state-default">Item 4</li>
+    <li class="ui-state-default">Item 5</li>
+</ul>
 
 <?php require_once DIR_PATH . DS . 'includes' . DS . 'cms' . DS . 'cms_bottom_content_inc.phtml';?>

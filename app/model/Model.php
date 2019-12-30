@@ -86,8 +86,10 @@ class Model {
     }
 
     public function fetchJoin() {
-        $query = 'SELECT menu.name AS primary_name, 
+        $query = 'SELECT menu.id AS primary_id,
+                         menu.name AS primary_name, 
                          menu.uri AS primary_uri, 
+                         menu_sub1.id AS sub1_id,
                          menu_sub1.name AS sub1_name, 
                          menu_sub2.uri AS sub1_uri, 
                          menu_sub2.name AS sub2_name, 

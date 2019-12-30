@@ -1,32 +1,36 @@
 <?php
 
-$menu = $_POST['menu'];
+//$menu = $_POST['menu'];
 
-$menu_array = unserialize(base64_decode($menu));
+//$menu_array = unserialize(base64_decode($menu));
 
-dump($menu_array);
+dump($_POST);
 
 
-foreach ($menu_array as $key => $primaryCategory) {
-    echo 'Name primary: ' . $key . '<br>';
 
-    echo '...URI primary: ' . $primaryCategory['uri'] . '<br><br>';
 
-    foreach ($primaryCategory as $key2 => $category) {
-        if (is_array($category)) {
-            echo '......Podkategoria: ' . $key2 . '<br>';
 
-            foreach ($category as $key3 => $subCategory) {
-                if (!is_array($subCategory)) {
-                    echo '.........Uri podkategorii: ' . $subCategory . '<br><br>';
-                } else {
-                    foreach ($subCategory as $key4 => $lastSubCat) {
-                        echo '............Podkategoria: ' . $key3 . '<br><br>';
-                        echo '...............Uri Podkategorii: ' . $lastSubCat . '<br><br>';
-                    }
-                }
-            }
-        }
-    }
 
-}
+//foreach ($menu_array as $key => $primaryCategory) {
+//    echo $key . '<br>'; // Primary name
+//
+//    echo $primaryCategory['uri'] . '<br><br>'; // Primary URI
+//
+//    foreach ($primaryCategory as $key2 => $category) {
+//        if (is_array($category)) {
+//            echo $key2 . '<br>'; // Subcategory name
+//
+//            foreach ($category as $key3 => $subCategory) {
+//                if (!is_array($subCategory)) {
+//                    echo $subCategory . '<br><br>'; // Subcategory URI
+//                } else {
+//                    foreach ($subCategory as $key4 => $lastSubCat) {
+//                        echo $key3 . '<br><br>'; // Subcategory of subcategory name
+//                        echo $lastSubCat . '<br><br>'; // Subcategory of subcategory URI
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//}

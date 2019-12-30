@@ -14,7 +14,8 @@ $(document).ready(function() {
 
 
     //MENU ITEMS
-    $('.cms-menu-items').children('li').click(function() {
+    $('body').on('click', '.menu-list-item', function(e) {
+        if (e.target !== this) return;
         var item = $(this);
         if (item.next('.cms-menu-item-extended').hasClass('show')) {
             item.next('.cms-menu-item-extended').removeClass('show');
@@ -23,11 +24,16 @@ $(document).ready(function() {
             item.next('.cms-menu-item-extended').addClass('show cms-item-border-bottom-radius');
             item.addClass('cms-item-border-top-radius');
         }
-
-
     });
 
     //END MENU ITEMS
 
 
+    //ADDING NEW MENU CATEGORY
+
+        $( "#primary-menu, #sub-menu-level1, #sub-menu-level2" ).sortable({
+            connectWith: ".draggable-list"
+        }).disableSelection();
+
+    //END ADDING NEW MENU CATEGORY
 });

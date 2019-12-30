@@ -2,55 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2bd8f287-ba7b-48bc-95db-747e101b4650" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controller/AbstractController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controller/CMSController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/includes/cms/cms_bottom_content_inc.phtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/includes/cms/cms_top_content_inc.phtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/includes/cms/top_menu_inc.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/model/cms/Menu.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/scripts/ajax/change_avatar_ajax.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/view/admin.phtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/view/cms/menu.phtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/view/cms/settings.phtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/view/cms/test_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/croppie.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577391572.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577391740.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577391765.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577392283.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577392300.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577393637.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577393639.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577393686.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577393721.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577393743.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577393937.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577456191.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577456285.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577456331.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577549674.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577549684.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577549695.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/avatars/1577549700.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/cms.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/croppie.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/user_settings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/includes/logged_in_top_content_inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/includes/logged_in_top_content_inc.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/includes/top_content_inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/includes/top_content_inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/includes/utils_inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/includes/utils_inc.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/user_settings.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/user_settings.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/cms/menu.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/cms/menu.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/cms/test_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/cms/test_form.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/test.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/cms.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/cms.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +138,8 @@
       <workItem from="1577376707055" duration="11345000" />
       <workItem from="1577456098019" duration="5187000" />
       <workItem from="1577543057893" duration="17527000" />
-      <workItem from="1577650820161" duration="7454000" />
+      <workItem from="1577650820161" duration="8119000" />
+      <workItem from="1577727642737" duration="10959000" />
     </task>
     <servers />
   </component>

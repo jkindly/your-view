@@ -185,12 +185,14 @@ footer {
     position: absolute;
     bottom: 0;
     height: 40px;
+    width: 1140px;
 }
 
 .footer-description {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .fa-heart {
@@ -433,7 +435,7 @@ input::placeholder {
 }
 
 .cms-menu-items li {
-    margin-top: 10px;
+    margin-top: 10px !important;
     padding: 5px;
     border-radius: 5px;
     background-color: var(--def-blue);
