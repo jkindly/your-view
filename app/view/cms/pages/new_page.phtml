@@ -1,0 +1,32 @@
+<?php
+require_once DIR_PATH . DS . 'includes' . DS . 'cms' . DS . 'cms_top_content_inc.phtml';
+require_once DIR_PATH . DS . 'model' . DS . 'cms' . DS . 'Menu.php';
+?>
+
+<h1 class="mb-4">Utwórz nową stronę</h1>
+
+<div class="cms-head-with-input">
+    <p class="cms-input-head">Nazwa strony</p>
+    <input type="text" class="cms-input">
+</div>
+
+<div class="cms-head-with-input">
+    <p class="cms-input-head">Adres URI</p>
+    <?= $_SERVER['SERVER_NAME'];?>/&nbsp;<input type="text" class="cms-input italic-font">
+</div>
+
+<div class="cms-head-with-input">
+    <p class="cms-input-head">Meta tytuł</p>
+    <input type="text" class="cms-input">
+</div>
+
+<div class="cms-head-with-input">
+    <p class="cms-input-head">Meta opis</p>
+    <textarea class="cms-input"></textarea>
+</div>
+
+<p class="cms-input-head">Treść strony</p>
+<textarea id="cms-page-content"></textarea>
+
+<?php
+require_once DIR_PATH . DS . 'includes' . DS . 'cms' . DS . 'cms_bottom_content_inc.phtml'; ?>

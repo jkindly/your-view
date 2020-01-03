@@ -7,6 +7,8 @@ require_once 'AbstractController.php';
 class CMSController extends AbstractController
 {
     public function __construct() {
+        $this->addRoute('/admin/cms-new-page', 'pages\new_page.phtml');
+        $this->addRoute('/admin/cms-manage-pages', 'pages\manage_pages.phtml');
         $this->addRoute('/admin/cms-menu', 'menu.phtml');
         $this->addRoute('/admin/cms-settings', 'settings.phtml');
         $this->addRoute('/admin/test_form.php', 'test_form.php');

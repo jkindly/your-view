@@ -19,6 +19,7 @@ if (isset($_SESSION['id'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="http://localhost/your-view/public/css/main.css">
     <link rel="stylesheet" href="http://localhost/your-view/public/css/croppie.css">
+    <script src="https://cdn.tiny.cloud/1/s6dh7kj3il7jcgsrvqf7lg7aq7icpg4kvi27uokqn8hj1yv1/tinymce/5/tinymce.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="http://localhost/your-view/public/js/main.js"></script>

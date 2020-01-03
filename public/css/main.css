@@ -406,10 +406,10 @@ input::placeholder {
 .cms-submenu {
     list-style: none;
     display: none;
+    margin-left: 30px;
 }
 
 .cms-submenu li {
-    margin-left: 25px;
     font-size: 14px;
 }
 
@@ -475,4 +475,40 @@ input::placeholder {
 
 .cms-item-border-bottom-radius {
     border-radius: 0 0 5px 5px !important;
+}
+
+.cms-head-with-input {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.cms-head-with-input input, textarea {
+    width: 70%
+}
+
+.cms-head-with-input textarea {
+    min-height: 50px;
+}
+
+.cms-input-head {
+    margin-top: 10px;
+    color: var(--def-blue);
+    width: 30%;
+}
+
+.cms-input-head:first-of-type {
+    margin-top: 0;
+}
+
+.cms-input {
+    border-radius: 5px;
+    border: 1px solid var(--def-font);
+    color: var(--def-font);
+}
+
+.italic-font {
+    font-style: italic;
+    /*font-weight: 400;*/
 }
