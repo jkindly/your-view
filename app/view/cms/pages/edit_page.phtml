@@ -1,0 +1,81 @@
+<?php
+require_once DIR_PATH . DS . 'includes' . DS . 'cms' . DS . 'cms_top_content_inc.phtml';
+require_once DIR_PATH . DS . 'model' . DS . 'cms' . DS . 'Page.php';
+
+$id = $_GET['id'];
+
+$page = new Page();
+$pageToEdit = $page->getPageById($id);
+?>
+
+    <h1 class="mb-4">Edycja strony <span class="italic-font" style="color: var(--def-blue)"><?= $pageToEdit->getName() ?></span>
+        <span class="remove-page-btn"><i title="Usuń stronę" class="fas fa-times-circle ml-2"></i></span>
+    </h1>
+<?php
+    if (isset($_SESSION['createPageError'])) {
+        echo '<div class="failed-login-box">' . $_SESSION['createPageError'] . '</div>';
+        unset($_SESSION['createPageError']);
+    }
+
+
+    if (isset($_SESSION['editPageSuccess'])): ?>
+        <div class="message-box">
+            <p class="success-message"><?= $_SESSION['editPageSuccess'] ?></p>
+            <p>Możesz zobaczyć swoją stronę pod adresem:
+                <a target="_blank" href="<?= $_SESSION['newPageAddress'] ?>"><?= $_SESSION['newPageAddress'] ?></a></p>
+        </div>
+    <?php endif;
+    unset($_SESSION['editPageSuccess']);
+    unset($_SESSION['newPageAddress']);
+?>
+<form action="<?= HOST ?>app/scripts/cms/create_edit_page.php" method="post">
+    <div class="cms-head-with-input">
+        <p class="cms-input-head">Nazwa strony</p>
+        <input type="text" name="page_name" class="cms-input" value="<?= $pageToEdit->getName() ?>" required>
+    </div>
+
+    <div class="cms-head-with-input">
+        <p class="cms-input-head">Adres URI</p>
+        <input type="text" name="page_uri" class="cms-input italic-font" value="<?= $pageToEdit->getUri() ?>" required>
+    </div>
+
+    <div class="cms-head-with-input">
+        <p class="cms-input-head">Meta tytuł</p>
+        <input type="text" name="meta_title" class="cms-input" value="<?= $pageToEdit->getMetaTitle() ?>">
+    </div>
+
+    <div class="cms-head-with-input">
+        <p class="cms-input-head">Meta opis</p>
+        <textarea name="meta_desc" class="cms-input" value="<?= $pageToEdit->getMetaDesc() ?>"></textarea>
+    </div>
+
+    <div class="cms-head-with-input" style="justify-content: unset">
+        <p class="cms-input-head">Meta robots</p>
+        <select class="cms-input" name="meta_robots">
+            <option value="index, follow">index, follow</option>
+            <option value="index, nofollow">index, nofollow</option>
+            <option value="noindex, follow">noindex, follow</option>
+            <option value="noindex, nofollow">noindex, nofollow</option>
+        </select>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("option[value='<?= $pageToEdit->getMetaRobots() ?>']").prop('selected', true);
+        });
+    </script>
+
+    <p class="cms-input-head mt-5">Treść strony</p>
+    <textarea name="page_content" id="cms-page-content">
+         <?= $pageToEdit->getContent() ?>
+    </textarea>
+
+    <input type="hidden" name="page_id" value="<?= $pageToEdit->getId() ?>">
+
+    <input type="submit" value="Zapisz" class="blue-btn mt-2">
+</form>
+
+
+
+<?php
+require_once DIR_PATH . DS . 'includes' . DS . 'cms' . DS . 'cms_bottom_content_inc.phtml';

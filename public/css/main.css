@@ -44,6 +44,32 @@ h1 {
     padding-top: 0;
 }
 
+h2 {
+    font-size: 20px;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.blue-color {
+    color: var(--def-blue);
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
 /** BOOTSTRAP OVERRIDES **/
 
 /** END OF BOOTSTRAP OVERRIDES **/
@@ -306,6 +332,15 @@ input::placeholder {
     margin-top: -20px;
 }
 
+.message-box {
+    margin-bottom: 30px;
+}
+
+.success-message {
+    color: #00CC00;
+    margin-top: -20px;
+}
+
 .user-settings-container {
     margin-top: 30px;
 }
@@ -384,10 +419,11 @@ input::placeholder {
 
 .cms-menu {
     list-style: none;
-    background-color: #6a6a6a;
+    background-color: #d7d7d7;
+    border: 1px solid #9c9c9c;
     width: 160px;
     height: 500px;
-    color: #fff;
+    color: #332b2b;
     padding: 5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -511,4 +547,71 @@ input::placeholder {
 .italic-font {
     font-style: italic;
     /*font-weight: 400;*/
+}
+
+.blue-btn {
+    background-color: var(--def-blue);
+    border: 1px solid var(--def-blue-border);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.blue-btn:hover {
+    background-color: var(--def-blue-hover);
+}
+
+.cms-created-page {
+    background-color: var(--def-blue);
+    width: 100%;
+    height: 40px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--def-blue-border);
+    color: #fff;
+}
+
+.cms-created-page:hover {
+    background-color: var(--def-blue-hover);
+    cursor: pointer;
+}
+.fa-times-circle {
+    color: red;
+    cursor: pointer;
+}
+
+.cms-active-item {
+    color: var(--def-blue);
+}
+
+#sortable1, #sortable2 {
+    border: 1px solid #eee;
+    width: 142px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    margin-right: 10px;
+}
+#sortable1 li, #sortable2 li {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    width: 120px;
+}
+
+.cms-menu-edit {
+    width: 300px;
+}
+
+#sub-menu-level1 {
+    min-height: 30px;
+}
+
+#sub-menu-level2 {
+    min-height: 30px;
+}
+
+.menu-manage-container {
+    display: flex;
 }

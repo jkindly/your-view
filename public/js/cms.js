@@ -11,6 +11,18 @@ $(document).ready(function() {
             item.children('.cms-submenu').addClass('show');
     });
 
+    var currentUri = window.location.pathname;
+    currentUri = currentUri.split('/');
+    currentUri = currentUri[currentUri.length-1]
+    if (currentUri === 'cms-edit-page')
+        currentUri = 'cms-manage-pages';
+
+    $('a[href*='+currentUri+']').each(function() {
+        $(this).parent().parent().addClass('show');
+        $(this).parent().addClass("cms-active-item");
+    });
+
+
     //END MAIN LEFT MENU
 
 
@@ -54,5 +66,40 @@ $(document).ready(function() {
             '//www.tiny.cloud/css/codepen.min.css'
         ]
     });
+
+        // auto generated uri
+    $('input[name="page_uri"]').focus(function() {
+        var pageName = $('input[name="page_name"]').val();
+        var uri = pageName.split(' ').join('-');
+        var str = uri.replace(/[&\/\\#,+()$~%.'";:*!?<>{}\[\]]/g, '');
+        str = RemoveAccents(str);
+        $(this).val(str.toLowerCase());
+    });
+
+    $('.remove-page-btn').click(function() {
+        if (confirm("Na pewno usunąć stronę?")) {
+            var id = window.location.search.substr(1);
+            id = id.split('=');
+            var host = window.location.hostname + '/your-view/';
+            window.location.replace('http://'+host+'app/scripts/cms/delete_page.php?id='+id[1]);
+        }
+    });
     //END PAGES
 });
+
+
+function RemoveAccents(strAccents) {
+    var strAccents = strAccents.split('');
+    var strAccentsOut = new Array();
+    var strAccentsLen = strAccents.length;
+    var accents = 'ĄąĆćĘęŁłŃńÓóŚśŹźŻż';
+    var accentsOut = 'aacceellnnoosszzzz';
+    for (var y = 0; y < strAccentsLen; y++) {
+        if (accents.indexOf(strAccents[y]) != -1) {
+            strAccentsOut[y] = accentsOut.substr(accents.indexOf(strAccents[y]), 1);
+        } else
+            strAccentsOut[y] = strAccents[y];
+    }
+    strAccentsOut = strAccentsOut.join('');
+    return strAccentsOut;
+}

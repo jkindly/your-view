@@ -10,6 +10,7 @@ if (strstr($uri, 'admin/')) {
     $controller->renderView();
 } else {
     $controller = new MainController();
+    $controller->dynamicViews();
     $controller->renderView();
 }
 

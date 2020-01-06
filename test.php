@@ -21,7 +21,7 @@ function fetch($table, ...$columns) {
 function fetchWithWhere($table, $where, $value, ...$columns) {
     $columnsToFetch = getColumns(...$columns);
 
-    echo 'SELECT ' . $columnsToFetch . ' FROM '. $table . ' WHERE ' . $where . $value;
+    echo 'SELECT ' . $columnsToFetch . ' FROM '. $table . ' WHERE ' . $where . ' = ' . '"'.$value.'"';
 }
 
 function fetchWithAndWhere($table, array $where, ...$columns) {
@@ -67,9 +67,9 @@ function insert($table, $values=[]) {
 
     foreach ($values as $key => $value) {
         if ($key !== array_key_last($values))
-            $queryString .= $value . ', ';
+            $queryString .= '"'.$value.'"' . ', ';
         else
-            $queryString .= $value;
+            $queryString .= '"'.$value.'"';
     }
 
     $queryString .= ')';
@@ -77,12 +77,44 @@ function insert($table, $values=[]) {
     echo $queryString;
 }
 
-insert('menu', ['name' => 'Home', 'display_order' => 1]);
+insert('page', [
+    'name' => 'asd',
+    'uri' => 'dsa',
+    'meta_title' => '',
+    'meta_desc' => '',
+    'content' => htmlentities('<h1>To jest H1</h1>
+<h2>To jest H2</h2>
+<p>To jest paragraf</p>
+<p>To jest tabelka</p>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+<tbody>
+<tr>
+<td style="width: 33.3333%;">Nazwa</td>
+<td style="width: 33.3333%;">Cena</td>
+<td style="width: 33.3333%;">Ilość</td>
+</tr>
+<tr>
+<td style="width: 33.3333%;">Marchew</td>
+<td style="width: 33.3333%;">2zł/kg</td>
+<td style="width: 33.3333%;">3</td>
+</tr>
+<tr>
+<td style="width: 33.3333%;">Ziemniak</td>
+<td style="width: 33.3333%;">3zł/kg</td>
+<td style="width: 33.3333%;">2</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>')
+]);
 
     //update('user', ['id' => 1], ['avatar_src' => 'tutaj adres obrazka', 'inny_arg' => 'asd']);
 
 //fetch('user', 'kolumna');
 //echo '<br>';
-//fetchWithWhere('user', 'id = ', 1, 'first_name', 'last_name');
+//fetchWithWhere('page', 'uri', 'asd');
 //echo '<br>';
-//fetchWithAndWhere('user', ['id'=>1, 'first_name'=>'jakub', 'last_name'=>'kozupa']);
+//fetchWithAndWhere('page', [
+//    'id' => 1,
+//    'uri' => 'xD'
+//]);

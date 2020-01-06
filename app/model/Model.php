@@ -8,6 +8,8 @@ class Model {
     public function __construct() {
         try {
             $this->pdo = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD);
+            $this->pdo -> query ('SET NAMES utf8');
+            $this->pdo -> query ('SET CHARACTER_SET utf8_unicode_ci');
         } catch (PDOException $e) {
             echo 'Wystąpił błąd połączenia z bazą. ' . $e->getMessage();
         }
@@ -36,14 +38,34 @@ class Model {
         return $columnsToFetch;
     }
 
+    public function fetchWithWhere($table, $where, $value, ...$columns) {
+        $columnsToFetch = $this->getColumns(...$columns);
+
+        $queryString = 'SELECT ' . $columnsToFetch . ' FROM '. $table . ' WHERE ' . $where . ' = ' . '"'.$value.'"';
+
+        return $this->sendQuery($queryString);
+    }
+
+    function fetchWithAndWhere($table, array $where, ...$columns) {
+        $columnsToFetch = $this->getColumns(...$columns);
+        $whereAnd = "";
+
+        foreach($where as $item => $value) {
+            $whereAnd .= $item . ' = ' . "'" . $value . "'" . ' AND ';
+        }
+        $whereAnd = substr($whereAnd, 0, -4);
+        $queryString = 'SELECT ' . $columnsToFetch . ' FROM ' . $table . ' WHERE ' . $whereAnd;
+        return $this->sendQuery($queryString);
+    }
+
     public function update($table, $where = [], $arguments = []) {
         $queryString = "UPDATE " . $table . ' SET ';
 
         foreach ($arguments as $key => $value) {
             if ($key !== array_key_last($arguments))
-                $queryString .= $key . ' = ' . "' $value ', ";
+                $queryString .= $key . ' = ' . '"'.$value. '", ';
             else
-                $queryString .= $key . ' = ' . "' $value '";
+                $queryString .= $key . ' = ' . '"'.$value. '"';
         }
 
         foreach ($where as $key => $item) {
@@ -67,15 +89,14 @@ class Model {
 
         foreach ($values as $key => $value) {
             if ($key !== array_key_last($values))
-                $queryString .= "'$value'" . ', ';
+                $queryString .= '"'.$value.'"' . ', ';
             else
-                $queryString .= $value;
+                $queryString .= '"'.$value.'"';
         }
 
         $queryString .= ')';
 
         $this->sendQuery($queryString);
-
     }
 
     public function fetch($table, ...$columns) {
@@ -101,6 +122,11 @@ class Model {
                   ON menu_sub2.id_menu_sub1 = menu_sub1.id 
                   ORDER BY menu.display_order';
 
+        return $this->sendQuery($query);
+    }
+
+    public function delete($table, $what, $value) {
+        $query = 'DELETE FROM ' . $table . ' WHERE ' . $what . ' = ' . '"'.$value.'"';
         return $this->sendQuery($query);
     }
 }

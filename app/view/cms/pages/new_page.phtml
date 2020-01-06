@@ -4,29 +4,75 @@ require_once DIR_PATH . DS . 'model' . DS . 'cms' . DS . 'Menu.php';
 ?>
 
 <h1 class="mb-4">Utwórz nową stronę</h1>
+<?php
+    if (isset($_SESSION['createPageError'])) {
+        echo '<div class="failed-login-box">' . $_SESSION['createPageError'] . '</div>';
+        unset($_SESSION['createPageError']);
+    }
+    if (isset($_SESSION['createPageSuccess'])): ?>
+        <div class="message-box">
+            <p class="success-message"><?= $_SESSION['createPageSuccess'] ?></p>
+            <p>Możesz zobaczyć swoją stronę pod adresem:
+            <a target="_blank" href="<?= $_SESSION['newPageAddress'] ?>"><?= $_SESSION['newPageAddress'] ?></a></p>
+        </div>
+    <?php endif;
+    unset($_SESSION['createPageSuccess']);
+    unset($_SESSION['newPageAddress']);
+?>
+<form action="<?= HOST ?>app/scripts/cms/create_edit_page.php" method="post">
+    <div class="cms-head-with-input">
+        <p class="cms-input-head">Nazwa strony</p>
+        <input type="text" name="page_name" class="cms-input"
+               value="<?php if (isset($_SESSION['saved_page_name'])) echo $_SESSION['saved_page_name'];?>" required>
+    </div>
 
-<div class="cms-head-with-input">
-    <p class="cms-input-head">Nazwa strony</p>
-    <input type="text" class="cms-input">
-</div>
+    <div class="cms-head-with-input">
+        <p class="cms-input-head">Adres URI</p>
+        <input type="text" name="page_uri" class="cms-input italic-font"
+               value="<?php if (isset($_SESSION['saved_page_uri'])) echo $_SESSION['saved_page_uri'];?>" required>
+    </div>
 
-<div class="cms-head-with-input">
-    <p class="cms-input-head">Adres URI</p>
-    <?= $_SERVER['SERVER_NAME'];?>/&nbsp;<input type="text" class="cms-input italic-font">
-</div>
+    <div class="cms-head-with-input">
+        <p class="cms-input-head">Meta tytuł</p>
+        <input type="text" name="meta_title" class="cms-input"
+               value="<?php if (isset($_SESSION['saved_meta_title'])) echo $_SESSION['saved_meta_title'];?>">
+    </div>
 
-<div class="cms-head-with-input">
-    <p class="cms-input-head">Meta tytuł</p>
-    <input type="text" class="cms-input">
-</div>
+    <div class="cms-head-with-input">
+        <p class="cms-input-head">Meta opis</p>
+        <textarea name="meta_desc" class="cms-input"><?php if (isset($_SESSION['saved_meta_desc'])) echo $_SESSION['saved_meta_desc'];?></textarea>
+    </div>
 
-<div class="cms-head-with-input">
-    <p class="cms-input-head">Meta opis</p>
-    <textarea class="cms-input"></textarea>
-</div>
+    <div class="cms-head-with-input" style="justify-content: unset">
+        <p class="cms-input-head">Meta robots</p>
+        <select class="cms-input" name="meta_robots">
+            <option value="index, follow">index, follow</option>
+            <option value="index, nofollow">index, nofollow</option>
+            <option value="noindex, follow">noindex, follow</option>
+            <option value="noindex, nofollow">noindex, nofollow</option>
+        </select>
+    </div>
 
-<p class="cms-input-head">Treść strony</p>
-<textarea id="cms-page-content"></textarea>
+    <p class="cms-input-head mt-5">Treść strony</p>
+    <textarea name="page_content" id="cms-page-content">
+        <?php if (isset($_SESSION['saved_content'])) echo $_SESSION['saved_content'];?>
+    </textarea>
+    <?php
+        unset($_SESSION['saved_page_name']);
+        unset($_SESSION['saved_page_uri']);
+        unset($_SESSION['saved_meta_title']);
+        unset($_SESSION['saved_meta_desc']);
+        unset($_SESSION['saved_meta_robots']);
+        unset($_SESSION['saved_content']);
+    ?>
+    <input type="submit" value="Utwórz stronę" class="blue-btn mt-2">
+</form>
+
+<script>
+    $(document).ready(function() {
+        $("option[value='<?= $_SESSION['saved_meta_robots'] ?>']").prop('selected', true);
+    });
+</script>
 
 <?php
 require_once DIR_PATH . DS . 'includes' . DS . 'cms' . DS . 'cms_bottom_content_inc.phtml'; ?>

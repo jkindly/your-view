@@ -1,5 +1,5 @@
 <?php
-require DIR_PATH . DS . 'model' . DS . 'User.php';
+require_once DIR_PATH . DS . 'model' . DS . 'User.php';
 if (session_status() == PHP_SESSION_NONE)
     session_start();
 if (isset($_SESSION['id'])) {
@@ -10,21 +10,9 @@ if (isset($_SESSION['id'])) {
 ?>
 <!doctype html>
 <html lang="pl">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://kit.fontawesome.com/752157b47f.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap&subset=latin-ext" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap&subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="http://localhost/your-view/public/css/main.css">
-    <link rel="stylesheet" href="http://localhost/your-view/public/css/croppie.css">
-    <script src="https://cdn.tiny.cloud/1/s6dh7kj3il7jcgsrvqf7lg7aq7icpg4kvi27uokqn8hj1yv1/tinymce/5/tinymce.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="http://localhost/your-view/public/js/main.js"></script>
-    <title></title>
-</head>
+<?php
+include_once dirname(__FILE__).'/../includes/header.phtml';
+?>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand brand" href="<?= HOST ?>">Your view</a>

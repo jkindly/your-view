@@ -1,7 +1,7 @@
 <?php
 
-
-abstract class AbstractController
+require_once (dirname(__FILE__).'/../model/Model.php');
+abstract class AbstractController extends Model
 {
     protected $uri = [];
     protected $view = [];

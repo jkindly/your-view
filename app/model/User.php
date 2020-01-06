@@ -1,5 +1,5 @@
 <?php
-require 'Model.php';
+require_once 'Model.php';
 require_once DIR_PATH.DS.'includes'.DS.'utils_inc.php';
 
 class User extends Model {

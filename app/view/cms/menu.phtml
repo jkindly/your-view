@@ -1,18 +1,39 @@
 <?php
 require_once DIR_PATH . DS . 'includes' . DS . 'cms' . DS . 'cms_top_content_inc.phtml';
 require_once DIR_PATH . DS . 'model' . DS . 'cms' . DS . 'Menu.php';
+require_once DIR_PATH . DS . 'model' . DS . 'cms' . DS . 'Page.php';
 
 $menu = new Menu();
-
 $menuItems = $menu->fetchJoin();
 
+$page = new Page();
+$pages = $page->getAllPages();
 $primaryCatName = "";
 $sub1CatName = "";
 $sub2CatName = "";
 
 ?>
 
-<h1 class="mb-4">Zarządzanie menu</h1>
+<h1 class="mb-4">Zarządzanie menu górnym</h1>
+
+<div class="menu-manage-container">
+    <div class="cms-available-sites">
+        <h2 class="blue-color">Dostępne strony</h2>
+        <ul class="cms-menu-items no-list-style">
+            <?php foreach ($pages as $page): ?>
+                <li><?= $page->getName() ?></li>
+            <?php endforeach;?>
+        </ul>
+    </div>
+    <div class="cms-adjust-menu ml-5">
+        <h2 class="blue-color">Menu</h2>
+        <ul class="cms-menu-items no-list-style">
+            <li>asd</li>
+            <li>asd</li>
+        </ul>
+    </div>
+</div>
+
 <form action="test_form.php" method="post">
 <ul class="cms-menu-items no-list-style">
 <?php
@@ -85,37 +106,6 @@ $sub2CatName = "";
 </ul>
 <!--    <input type="hidden" name="menu" value="--><?php //print base64_encode(serialize($menu))?><!--">-->
 </form>
-
-
-<style>
-    #sortable1, #sortable2 {
-        border: 1px solid #eee;
-        width: 142px;
-        min-height: 20px;
-        list-style-type: none;
-        margin: 0;
-        padding: 5px 0 0 0;
-        margin-right: 10px;
-    }
-    #sortable1 li, #sortable2 li {
-        margin: 0 5px 5px 5px;
-        padding: 5px;
-        font-size: 1.2em;
-        width: 120px;
-    }
-
-    .cms-menu-edit {
-        width: 300px;
-    }
-
-    #sub-menu-level1 {
-        min-height: 30px;
-    }
-
-    #sub-menu-level2 {
-        min-height: 30px;
-    }
-</style>
 
 
 TESTY DRAGGABLE NAV
