@@ -3,14 +3,18 @@ require_once DIR_PATH . DS . 'includes' . DS . 'cms' . DS . 'cms_top_content_inc
 require_once DIR_PATH . DS . 'model' . DS . 'cms' . DS . 'Menu.php';
 require_once DIR_PATH . DS . 'model' . DS . 'cms' . DS . 'Page.php';
 
+
 $menu = new Menu();
-$menuItems = $menu->fetchJoin();
+$menuLevel1 = $menu->getMenuLevel1();
+
 
 $page = new Page();
 $pages = $page->getAllPages();
+
 $primaryCatName = "";
 $sub1CatName = "";
 $sub2CatName = "";
+
 
 ?>
 
@@ -19,140 +23,49 @@ $sub2CatName = "";
 <div class="menu-manage-container">
     <div class="cms-available-sites">
         <h2 class="blue-color">Dostępne strony</h2>
-        <ul class="cms-menu-items no-list-style">
-            <?php foreach ($pages as $page): ?>
-                <li><?= $page->getName() ?></li>
-            <?php endforeach;?>
-        </ul>
+        <form action="<?= HOST ?>app/scripts/cms/add_page_to_menu.php" method="post">
+            <ul class="cms-menu-items no-list-style">
+                <?php foreach ($pages as $page): ?>
+                    <li class="cms-menu-item display-flex space-between align-center bg-grey">
+                        <?= $page->getName() ?>
+                        <!--<i title="Dodaj do menu" class="fas fa-plus-circle cms-add-to-menu"></i>-->
+                        <input type="checkbox" name="check_list[]" value="<?= $page->getId() ?>:<?= $page->getName() ?>">
+                    </li>
+                <?php endforeach;?>
+            </ul>
+            <input type="submit" value="Dodaj do menu" class="blue-btn">
+        </form>
     </div>
     <div class="cms-adjust-menu ml-5">
         <h2 class="blue-color">Menu</h2>
-        <ul class="cms-menu-items no-list-style">
-            <li>asd</li>
-            <li>asd</li>
+        <ul id="menu-level1" class="draggable-list cms-menu-items no-list-style">
+            <?php foreach ($menuLevel1 as $menuItem): ?>
+                <li class="cms-menu-item border-grey">
+                    <?= $menuItem->getName() ?>
+                    <i title="Usuń z menu" class="fas fa-times-circle float-right"></i>
+                    <?php $menuLevel2 = $menu->getMenuLevel2($menuItem->getId()) ?>
+                    <ul id="menu-level2" class="cms-submenu-drag draggable-list ml-4 no-list-style">
+                        <?php foreach ($menuLevel2 as $menuItem2): ?>
+                            <li class="cms-menu-item border-grey">
+                                <?= $menuItem2->getName() ?>
+                                <i title="Usuń z menu" class="fas fa-times-circle float-right"></i>
+                                <?php $menuLevel3 = $menu->getMenuLevel3($menuItem2->getId()) ?>
+                                <ul id="menu-level3" class="cms-submenu-drag draggable-list ml-5 no-list-style">
+                                    <?php foreach ($menuLevel3 as $menuItem3): ?>
+                                        <li class="cms-menu-item border-grey">
+                                            <?= $menuItem3->getName() ?>
+                                            <i title="Usuń z menu" class="fas fa-times-circle float-right"></i>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </li>
+            <?php endforeach; ?>
         </ul>
+        <input type="submit" value="Zapisz" class="blue-btn pl-3 pr-3">
     </div>
 </div>
-
-<form action="test_form.php" method="post">
-<ul class="cms-menu-items no-list-style">
-<?php
-    $menu = [];
-    foreach ($menuItems as $key => $menuItem):
-        if ($menuItem['primary_name'] != $primaryCatName): ?>
-            <li class="menu-list-item"><?= $menuItem['primary_name']; ?></li>
-            <div class="cms-menu-item-extended">
-                <div class="cms-menu-item-extended-item">
-                    Nazwa <input type="text" name="primary_name[]" value=" <?= $menuItem['primary_name']; ?>">
-                </div>
-                <div class="cms-menu-item-extended-item">
-                    URI <input type="text" name="primary_uri[]" value=" <?= $menuItem['primary_uri']; ?>">
-                </div>
-            </div>
-<?php
-            $primaryCatName = $menuItem['primary_name'];
-            $menu[$menuItem['primary_name']] = [
-                    'uri' => $menuItem['primary_uri']
-            ];
-
-        endif;
-        if ($menuItem['sub1_name'] != $sub1CatName):
-            if ($menuItem['sub1_name'] != ''): ?>
-                <ul class="cms-menu-items no-list-style">
-                    <li class="menu-list-item ml-3 mt-2"><?= $menuItem['sub1_name']; ?></li>
-                    <div class="cms-menu-item-extended ml-3">
-                        <div class="cms-menu-item-extended-item">
-                            Nazwa <input type="text" name="sub1_name[]" value=" <?= $menuItem['sub1_name']; ?>">
-                        </div>
-                        <div class="cms-menu-item-extended-item">
-                            URI <input type="text" name="sub1_uri[]" value=" <?= $menuItem['sub1_uri']; ?>">
-                        </div>
-                        <input type="hidden" name="sub1_parent_index[]" value="<?= $menuItem['primary_id'] ?>">
-                    </div>
-                </ul>
-            <?php
-                $menu[$menuItem['primary_name']][$menuItem['sub1_name']] = [
-                    'uri' => $menuItem['sub1_uri']
-                ];
-            endif;
-            $sub1CatName = $menuItem['sub1_name'];
-        endif;
-        if ($menuItem['sub2_name'] != $sub2CatName):
-            if ($menuItem['sub2_name'] != ''): ?>
-                <ul class="cms-menu-items no-list-style">
-                    <li class="menu-list-item ml-5 mt-2"><?= $menuItem['sub2_name']; ?></li>
-                    <div class="cms-menu-item-extended ml-5">
-                        <div class="cms-menu-item-extended-item">
-                            Nazwa <input type="text" name="sub2_name[]" value=" <?= $menuItem['sub2_name']; ?>">
-                        </div>
-                        <div class="cms-menu-item-extended-item">
-                            URI <input type="text" name="sub2_uri[]" value=" <?= $menuItem['sub2_uri']; ?>">
-                        </div>
-                        <input type="hidden" name="sub2_parent_index[]" value="<?= $menuItem['sub1_id'] ?>">
-                    </div>
-                </ul>
-            <?php
-                $menu[$menuItem['primary_name']][$menuItem['sub1_name']][$menuItem['sub2_name']] = [
-                    'uri' => $menuItem['sub2_uri']
-                ];
-            endif;
-            $sub2CatName = $menuItem['sub2_name'];
-        endif;
-   endforeach;
-
-?>
-    <div id="add-next-cat">Dodaj kategorię</div>
-    <input type="submit" value="wyślij">
-</ul>
-<!--    <input type="hidden" name="menu" value="--><?php //print base64_encode(serialize($menu))?><!--">-->
-</form>
-
-
-TESTY DRAGGABLE NAV
-
-<div class="cms-menu-edit">
-    <ul id="primary-menu" class="draggable-list border no-list-style">
-        <li>
-            Home
-            <ul id="sub-menu-level1" class="draggable-list ml-3 border no-list-style">
-                <li>
-                    First subcategory
-                    <ul id="sub-menu-level2" class="draggable-list ml-5 border no-list-style">
-                    </ul>
-                </li>
-                <li>
-                    Second subcategory
-                    <ul id="sub-menu-level2" class="draggable-list ml-5 border no-list-style">
-                        <li>Last item</li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li>
-            Ranking
-            <ul id="sub-menu-level1" class="draggable-list ml-5 border no-list-style">
-                <ul id="sub-menu-level2" class="draggable-list ml-5 border no-list-style">
-                </ul>
-            </ul>
-        </li>
-        <li>
-            Kategorie
-            <ul id="sub-menu-level1" class="draggable-list ml-5 border no-list-style">
-                <ul id="sub-menu-level2" class="draggable-list ml-5 border no-list-style">
-                </ul>
-            </ul>
-        </li>
-    </ul>
-</div>
-
-<ul id="sortable1" class="connectedSortable border">
-    <li class="ui-state-default">Item 1</li>
-    <ul id="sortable2" class="connectedSortable ml-5 border">
-    </ul>
-    <li class="ui-state-default">Item 2</li>
-    <li class="ui-state-default">Item 3</li>
-    <li class="ui-state-default">Item 4</li>
-    <li class="ui-state-default">Item 5</li>
-</ul>
 
 <?php require_once DIR_PATH . DS . 'includes' . DS . 'cms' . DS . 'cms_bottom_content_inc.phtml';?>

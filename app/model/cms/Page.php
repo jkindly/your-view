@@ -59,9 +59,7 @@ class Page extends Model
     public function getAllPages() {
         $arrayOfPages = array();
 
-        $pages = $this->fetch('page');
-
-
+        $pages = $this->fetchWithWhere('page', 'in_use', false);
 
         foreach ($pages as $page) {
             $newPage = new Page();
@@ -72,6 +70,7 @@ class Page extends Model
                 ->setMetaDesc($page['meta_desc'])
                 ->setMetaRobots($page['meta_robots'])
                 ->setContent($page['content']);
+            unset($newPage->pdo);
             array_push($arrayOfPages, $newPage);
         }
 
@@ -87,6 +86,7 @@ class Page extends Model
              ->setMetaDesc($array[0]['meta_desc'])
              ->setMetaRobots($array[0]['meta_robots'])
              ->setContent($array[0]['content']);
+        unset($this->pdo);
         return $this;
     }
 
@@ -100,8 +100,24 @@ class Page extends Model
                 ->setMetaDesc($array[0]['meta_desc'])
                 ->setMetaRobots($array[0]['meta_robots'])
                 ->setContent($array[0]['content']);
+            unset($this->pdo);
             return $this;
         }
+    }
+
+    public function addToMenu($id, $name) {
+        $itemCount = count($this->fetch('menu_level1'));
+
+        $this->insert('menu_level1', [
+            'name' => $name,
+            'display_order' => $itemCount+1
+        ]);
+
+        $this->update('page', [
+            'id' => $id
+        ], [
+            'in_use' => 1
+        ]);
     }
 
     public function getId()

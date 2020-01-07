@@ -107,20 +107,13 @@ class Model {
     }
 
     public function fetchJoin() {
-        $query = 'SELECT menu.id AS primary_id,
-                         menu.name AS primary_name, 
-                         menu.uri AS primary_uri, 
-                         menu_sub1.id AS sub1_id,
-                         menu_sub1.name AS sub1_name, 
-                         menu_sub2.uri AS sub1_uri, 
-                         menu_sub2.name AS sub2_name, 
-                         menu_sub2.uri AS sub2_uri
-                  FROM menu 
-                  LEFT JOIN menu_sub1 
-                  ON menu.id = menu_sub1.id_menu 
-                  LEFT JOIN menu_sub2 
-                  ON menu_sub2.id_menu_sub1 = menu_sub1.id 
-                  ORDER BY menu.display_order';
+        $query = 'SELECT menu_level1.name AS menu_level1_name, menu_level2.name AS menu_level2_name, menu_level3.name AS menu_level3_name
+FROM menu_level1
+LEFT JOIN menu_level2
+ON menu_level1.id = menu_level2.id_menu_level1
+LEFT JOIN menu_level3
+ON menu_level2.id = menu_level3.id_menu_level2
+ORDER BY menu_level1.display_order';
 
         return $this->sendQuery($query);
     }

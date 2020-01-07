@@ -16,8 +16,10 @@ $(document).ready(function() {
     currentUri = currentUri[currentUri.length-1]
     if (currentUri === 'cms-edit-page')
         currentUri = 'cms-manage-pages';
+    console.log(currentUri);
 
     $('a[href*='+currentUri+']').each(function() {
+        if (currentUri === 'admin') return;
         $(this).parent().parent().addClass('show');
         $(this).parent().addClass("cms-active-item");
     });
@@ -44,9 +46,11 @@ $(document).ready(function() {
 
     //ADDING NEW MENU CATEGORY
 
-        $( "#primary-menu, #sub-menu-level1, #sub-menu-level2" ).sortable({
+        $( "#menu-level1, #menu-level2, #menu-level3" ).sortable({
             connectWith: ".draggable-list"
         }).disableSelection();
+
+
 
     //END ADDING NEW MENU CATEGORY
 
