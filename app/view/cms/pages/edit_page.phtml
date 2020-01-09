@@ -28,7 +28,7 @@ $pageToEdit = $page->getPageById($id);
     unset($_SESSION['editPageSuccess']);
     unset($_SESSION['newPageAddress']);
 ?>
-<form action="<?= HOST ?>app/scripts/cms/create_edit_page.php" method="post">
+<form action="<?= HOST ?>app/scripts/cms/page/create_edit_page.php" method="post">
     <div class="cms-head-with-input">
         <p class="cms-input-head">Nazwa strony</p>
         <input type="text" name="page_name" class="cms-input" value="<?= $pageToEdit->getName() ?>" required>

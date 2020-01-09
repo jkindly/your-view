@@ -1,11 +1,15 @@
 <?php
 require_once DIR_PATH . DS . 'model' . DS . 'User.php';
+require_once DIR_PATH . DS . 'model' . DS . 'cms' . DS . 'Menu.php';
 if (session_status() == PHP_SESSION_NONE)
     session_start();
 if (isset($_SESSION['id'])) {
     $user = new User();
     $user->getUser($_SESSION['id']);
 }
+
+$menu = new Menu();
+$menuList = $menu->getMenuLevel1();
 
 ?>
 <!doctype html>
@@ -22,23 +26,28 @@ include_once dirname(__FILE__).'/../includes/header.phtml';
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto mr-3">
-            <li class="nav-item active">
-                <a class="nav-link" href="<?= HOST ?>">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Ranking</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Kategorie
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
+            <?php foreach ($menuList as $menuItem): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= HOST ?><?= $menuItem->getUri() ?>"> <?= $menuItem->getName() ?></a>
+                </li>
+            <?php endforeach; ?>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="--><?//= HOST ?><!--">Home <span class="sr-only">(current)</span></a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="#">Ranking</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item dropdown">-->
+<!--                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                    Kategorie-->
+<!--                </a>-->
+<!--                <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                    <a class="dropdown-item" href="#">Action</a>-->
+<!--                    <a class="dropdown-item" href="#">Another action</a>-->
+<!--                    <div class="dropdown-divider"></div>-->
+<!--                    <a class="dropdown-item" href="#">Something else here</a>-->
+<!--                </div>-->
+<!--            </li>-->
         </ul>
         <form class="form-inline my-2 my-lg-0 top-search-form">
             <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj..." aria-label="Wyszukaj">

@@ -2,12 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2bd8f287-ba7b-48bc-95db-747e101b4650" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/scripts/cms/add_page_to_menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/model/cms/Seo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/cms/menu/remove_page_from_menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/cms/menu/update_menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/cms/seo/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/view/cms/settings/seo.phtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/jquery-sortable-lists.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/CMSController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/CMSController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/includes/cms/cms_top_content_inc.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/includes/cms/cms_top_content_inc.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/includes/header.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/includes/header.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/includes/top_content_inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/includes/top_content_inc.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Model.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/cms/Menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/cms/Menu.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/cms/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/cms/Page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/scripts/cms/add_page_to_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/cms/menu/add_page_to_menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/scripts/cms/create_edit_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/cms/page/create_edit_page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/scripts/cms/delete_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/cms/page/delete_page.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/cms/menu.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/cms/menu.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/cms/pages/edit_page.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/cms/pages/edit_page.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/cms/pages/new_page.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/cms/pages/new_page.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/cms.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/cms.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/test.php" afterDir="false" />
@@ -76,15 +90,15 @@
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\xampp\htdocs\your-view\img" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\your-view\app\scripts\cms\page" />
+      <recent name="D:\xampp\htdocs\your-view\app\scripts\cms\menu" />
       <recent name="D:\xampp\htdocs\your-view\public\js" />
       <recent name="D:\xampp\htdocs\your-view\public\css" />
       <recent name="D:\xampp\htdocs\your-view\app" />
-      <recent name="D:\xampp\htdocs\your-view\app\config" />
-      <recent name="D:\xampp\htdocs\your-view\public" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\your-view\img" />
     </key>
   </component>
   <component name="RunManager">
@@ -146,7 +160,9 @@
       <workItem from="1578089962563" duration="4463000" />
       <workItem from="1578146643037" duration="18141000" />
       <workItem from="1578314739138" duration="19354000" />
-      <workItem from="1578415155289" duration="17443000" />
+      <workItem from="1578415155289" duration="18657000" />
+      <workItem from="1578510365498" duration="180000" />
+      <workItem from="1578586511100" duration="15974000" />
     </task>
     <servers />
   </component>
@@ -178,22 +194,22 @@
       <screen x="1982" y="0" width="1304" height="768" />
     </state>
     <state x="2088" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog/1982.0.1304.768/62.0.1858.1080@1982.0.1304.768" timestamp="1577551926572" />
-    <state x="2439" y="68" key="#com.intellij.ide.util.MemberChooser" timestamp="1578416761587">
+    <state x="2439" y="68" key="#com.intellij.ide.util.MemberChooser" timestamp="1578601927676">
       <screen x="1982" y="0" width="1304" height="768" />
     </state>
-    <state x="2439" y="68" key="#com.intellij.ide.util.MemberChooser/1982.0.1304.768/62.0.1858.1080@1982.0.1304.768" timestamp="1578416761587" />
+    <state x="2439" y="68" key="#com.intellij.ide.util.MemberChooser/1982.0.1304.768/62.0.1858.1080@1982.0.1304.768" timestamp="1578601927676" />
     <state x="2275" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1577546710757">
       <screen x="1982" y="0" width="1304" height="768" />
     </state>
     <state x="2275" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1982.0.1304.768/62.0.1858.1080@1982.0.1304.768" timestamp="1577546710757" />
-    <state x="2428" y="198" key="NewPhpClassDialog" timestamp="1578317689198">
+    <state x="2428" y="198" key="NewPhpClassDialog" timestamp="1578601879831">
       <screen x="1982" y="0" width="1304" height="768" />
     </state>
-    <state x="2428" y="198" key="NewPhpClassDialog/1982.0.1304.768/62.0.1858.1080@1982.0.1304.768" timestamp="1578317689198" />
-    <state x="2468" y="307" key="NewPhpFileDialog" timestamp="1578431759721">
+    <state x="2428" y="198" key="NewPhpClassDialog/1982.0.1304.768/62.0.1858.1080@1982.0.1304.768" timestamp="1578601879831" />
+    <state x="2468" y="307" key="NewPhpFileDialog" timestamp="1578603595237">
       <screen x="1982" y="0" width="1304" height="768" />
     </state>
-    <state x="2468" y="307" key="NewPhpFileDialog/1982.0.1304.768/62.0.1858.1080@1982.0.1304.768" timestamp="1578431759721" />
+    <state x="2468" y="307" key="NewPhpFileDialog/1982.0.1304.768/62.0.1858.1080@1982.0.1304.768" timestamp="1578603595237" />
     <state x="651" y="162" key="SettingsEditor" timestamp="1576700712595">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>

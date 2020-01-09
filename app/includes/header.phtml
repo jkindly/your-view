@@ -1,5 +1,6 @@
 <?php
 require_once (dirname(__FILE__).'/../model/cms/Page.php');
+require_once (dirname(__FILE__).'/../model/cms/Seo.php');
 
 $uri = $_SERVER['REQUEST_URI'];
 
@@ -7,6 +8,14 @@ $uri = explode('/', $uri);
 
 $page = new Page();
 $page->getPageByUri($uri[2]);
+
+$seo = new Seo();
+$seo->getSeoSettings();
+$seo->replaceSeoVariables($page->getName());
+
+if (empty($page->getMetaTitle())) {
+    $page->setMetaTitle($seo->getDefaultMetaTitle());
+}
 
 ?>
 

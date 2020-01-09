@@ -1,5 +1,5 @@
 <?php
-require_once '../../model/cms/Page.php';
+require_once '../../../model/cms/Page.php';
 
 $id = $_GET['id'];
 

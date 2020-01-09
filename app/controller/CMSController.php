@@ -12,7 +12,7 @@ class CMSController extends AbstractController
         $this->addRoute('/admin/cms-menu', 'menu.phtml');
         $this->addRoute('/admin/cms-settings', 'settings.phtml');
         $this->addRoute('/admin/cms-edit-page', 'pages\edit_page.phtml');
-        $this->addRoute('/admin/test_form.php', 'test_form.php');
+        $this->addRoute('/admin/cms-seo', 'settings\seo.phtml');
     }
 
     public function renderView()

@@ -79,11 +79,11 @@ function insert($table, $values=[]) {
 
 
     //update('user', ['id' => 1], ['avatar_src' => 'tutaj adres obrazka', 'inny_arg' => 'asd']);
-update('page', [
-    'in_use' => 1
-], [
-    'id' => 27
-]);
+//update('page', [
+//    'in_use' => 1
+//], [
+//    'id' => 27
+//]);
 //fetch('menu');
 //echo '<br>';
 //fetchWithWhere('page', 'uri', 'asd');
@@ -92,3 +92,44 @@ update('page', [
 //    'id' => 1,
 //    'uri' => 'xD'
 //]);
+include 'app/config/defines.php';
+include 'app/includes/top_content_inc.php';
+?>
+
+<style>
+    #myList li, #sortableListsBase li { background-color:#ddf; padding-left:50px; }
+
+</style>
+<script src="public/js/jquery-sortable-lists.js"></script>
+<script>
+    var options = {
+        // Like a css class name. Class will be removed after drop.
+        currElClass: 'currElemClass',
+        // or like a jQuery css object. Note that css object settings can't be removed
+        currElCss: {'background-color':'green', 'color':'#fff'}
+    }
+
+</script>
+<ul id="myList">
+    <li>
+        <div>Whatever you want here</div>
+        <ul>
+            <li><div>Nested list item</div></li>
+            <li><div>Another item</div></li>
+        </ul>
+    </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -437,6 +437,18 @@ input::placeholder {
     margin-bottom: 5px;
 }
 
+.cms-menu > li:hover {
+    color: var(--def-blue-hover);
+}
+
+.cms-menu > li:hover .cms-submenu {
+    color: #332b2b;
+}
+
+.cms-submenu > li:hover {
+    color: var(--def-blue-hover);
+}
+
 .cms-menu > li > i {
     width: 25px;
 }

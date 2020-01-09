@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    var host = window.location.hostname + '/your-view/';
 
     //MAIN LEFT MENU
 
@@ -46,10 +47,31 @@ $(document).ready(function() {
 
     //ADDING NEW MENU CATEGORY
 
-        $( "#menu-level1, #menu-level2, #menu-level3" ).sortable({
-            connectWith: ".draggable-list"
-        }).disableSelection();
+        $( "#cms-menu-manage" ).sortable();
+        $( "#cms-menu-manage" ).disableSelection();
+        // $( "#cms-menu-manage" ).on( "sortchange", function( event, ui ) {
+        //     $(this).children().each(function() {
+        //         var xd = $(this).children('.page-name').text() + ' index: ' + $(this).index();
+        //         console.log(xd);
+        //     });
+        // } );
+        // $( "#menu-level1, #menu-level2, #menu-level3" ).sortable({
+        //     connectWith: ".draggable-list"
+        // }).disableSelection();
+        //
+        // $( "#menu-level1" ).on( "sortreceive", function( event, ui ) {
+        //     console.log($('.cms-submenu-drag').children().text());
+        // } );
 
+        $('.menu-manage-container').on('click', '.cms-remove-from-menu', function() {
+            if (confirm("Na pewno usunąć stronę z menu?")) {
+                var id = $(this).parent().attr('id');
+                var pageName = $(this).prev('.page-name').text();
+                console.log(pageName);
+                console.log(id);
+                window.location.replace('http://'+host+'app/scripts/cms/menu/remove_page_from_menu.php?id='+id+'&page_name='+pageName);
+            }
+        });
 
 
     //END ADDING NEW MENU CATEGORY
@@ -84,8 +106,7 @@ $(document).ready(function() {
         if (confirm("Na pewno usunąć stronę?")) {
             var id = window.location.search.substr(1);
             id = id.split('=');
-            var host = window.location.hostname + '/your-view/';
-            window.location.replace('http://'+host+'app/scripts/cms/delete_page.php?id='+id[1]);
+            window.location.replace('http://'+host+'app/scripts/cms/page/delete_page.php?id='+id[1]);
         }
     });
     //END PAGES

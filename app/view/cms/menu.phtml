@@ -23,48 +23,43 @@ $sub2CatName = "";
 <div class="menu-manage-container">
     <div class="cms-available-sites">
         <h2 class="blue-color">Dostępne strony</h2>
-        <form action="<?= HOST ?>app/scripts/cms/add_page_to_menu.php" method="post">
-            <ul class="cms-menu-items no-list-style">
-                <?php foreach ($pages as $page): ?>
-                    <li class="cms-menu-item display-flex space-between align-center bg-grey">
-                        <?= $page->getName() ?>
-                        <!--<i title="Dodaj do menu" class="fas fa-plus-circle cms-add-to-menu"></i>-->
-                        <input type="checkbox" name="check_list[]" value="<?= $page->getId() ?>:<?= $page->getName() ?>">
-                    </li>
-                <?php endforeach;?>
-            </ul>
-            <input type="submit" value="Dodaj do menu" class="blue-btn">
-        </form>
+        <?php if (empty($pages)): ?>
+            <p>Brak dostępnych stron</p>
+        <?php else: ?>
+            <form action="<?= HOST ?>app/scripts/cms/menu/add_page_to_menu.php" method="post">
+                <ul class="cms-menu-items no-list-style">
+                    <?php foreach ($pages as $page): ?>
+                        <li class="cms-menu-item display-flex space-between align-center bg-grey">
+                            <?= $page->getName() ?>
+                            <!--<i title="Dodaj do menu" class="fas fa-plus-circle cms-add-to-menu"></i>-->
+                            <input type="checkbox" name="check_list[]"
+                                   value="<?= $page->getId() ?>:<?= $page->getName() ?>:<?= $page->getUri() ?>">
+                        </li>
+                    <?php endforeach;?>
+                </ul>
+                <input type="submit" value="Dodaj do menu" class="blue-btn">
+            </form>
+        <?php endif; ?>
     </div>
     <div class="cms-adjust-menu ml-5">
-        <h2 class="blue-color">Menu</h2>
-        <ul id="menu-level1" class="draggable-list cms-menu-items no-list-style">
-            <?php foreach ($menuLevel1 as $menuItem): ?>
-                <li class="cms-menu-item border-grey">
-                    <?= $menuItem->getName() ?>
-                    <i title="Usuń z menu" class="fas fa-times-circle float-right"></i>
-                    <?php $menuLevel2 = $menu->getMenuLevel2($menuItem->getId()) ?>
-                    <ul id="menu-level2" class="cms-submenu-drag draggable-list ml-4 no-list-style">
-                        <?php foreach ($menuLevel2 as $menuItem2): ?>
-                            <li class="cms-menu-item border-grey">
-                                <?= $menuItem2->getName() ?>
-                                <i title="Usuń z menu" class="fas fa-times-circle float-right"></i>
-                                <?php $menuLevel3 = $menu->getMenuLevel3($menuItem2->getId()) ?>
-                                <ul id="menu-level3" class="cms-submenu-drag draggable-list ml-5 no-list-style">
-                                    <?php foreach ($menuLevel3 as $menuItem3): ?>
-                                        <li class="cms-menu-item border-grey">
-                                            <?= $menuItem3->getName() ?>
-                                            <i title="Usuń z menu" class="fas fa-times-circle float-right"></i>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
+        <h2 class="blue-color">Menu (sortowane, bez zagnieżdżania)</h2>
+        <?php if (empty($menuLevel1)): ?>
+            <p>Brak elementów</p>
+        <?php else: ?>
+            <form action="<?= HOST ?>app/scripts/cms/menu/update_menu.php" method="post">
+                <ul id="cms-menu-manage" class="no-list-style">
+                        <?php foreach ($menuLevel1 as $menuItem): ?>
+                            <li id="menu_level1-<?= $menuItem->getId() ?>" class="cms-menu-item border-grey">
+                                <span class="page-name"><?= $menuItem->getName() ?></span>
+                                <i title="Usuń z menu" class="cms-remove-from-menu fas fa-times-circle float-right"></i>
+                                <input type="hidden" name="menu_items[]"
+                                       value="<?= $menuItem->getName() ?>:<?= $menuItem->getUri() ?>">
                             </li>
                         <?php endforeach; ?>
-                    </ul>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-        <input type="submit" value="Zapisz" class="blue-btn pl-3 pr-3">
+                </ul>
+                <input type="submit" value="Zapisz" class="blue-btn pl-3 pr-3">
+            </form>
+        <?php endif; ?>
     </div>
 </div>
 

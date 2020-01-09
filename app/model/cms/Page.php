@@ -105,18 +105,29 @@ class Page extends Model
         }
     }
 
-    public function addToMenu($id, $name) {
+    public function addToMenu($id, $name, $uri) {
         $itemCount = count($this->fetch('menu_level1'));
 
         $this->insert('menu_level1', [
             'name' => $name,
-            'display_order' => $itemCount+1
+            'display_order' => $itemCount+1,
+            'uri' => $uri
         ]);
 
         $this->update('page', [
             'id' => $id
         ], [
             'in_use' => 1
+        ]);
+    }
+
+    public function removeFromMenu($menuLevel, $id, $pageName) {
+        $this->delete($menuLevel, 'id', $id);
+
+        $this->update('page', [
+            'name' => $pageName
+        ], [
+            'in_use' => 0
         ]);
     }
 

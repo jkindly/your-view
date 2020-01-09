@@ -6,6 +6,7 @@ class Menu extends Model
     private $id;
     private $name;
     private $displayOrder;
+    private $uri;
 
     public function addItem($itemName, $order) {
         $this->insert('menu', ['name' => $itemName, 'display_order' => $order]);
@@ -18,7 +19,8 @@ class Menu extends Model
 
             $newMenuItem->setId($menuItem['id'])
                 ->setName($menuItem['name'])
-                ->setDisplayOrder($menuItem['display_order']);
+                ->setDisplayOrder($menuItem['display_order'])
+                ->setUri($menuItem['uri']);
             unset($newMenuItem->pdo);
 
             array_push($arrayOfObjects, $newMenuItem);
@@ -27,8 +29,16 @@ class Menu extends Model
         return $arrayOfObjects;
     }
 
+    public function updateMenu($pageName, $pageUri, $displayOrder) {
+        $this->update('menu_level1', [
+            'name' => $pageName
+        ], [
+            'display_order' => $displayOrder
+        ]);
+    }
+
     public function getMenuLevel1() {;
-        $menuItems = $this->fetch('menu_level1');
+        $menuItems = $this->fetchMenuSortable('menu_level1');
 
         return $this->createArrayOfObjects($menuItems);
     }
@@ -75,6 +85,17 @@ class Menu extends Model
     public function setDisplayOrder($displayOrder)
     {
         $this->displayOrder = $displayOrder;
+        return $this;
+    }
+
+    public function getUri()
+    {
+        return $this->uri;
+    }
+
+    public function setUri($uri)
+    {
+        $this->uri = $uri;
         return $this;
     }
 }

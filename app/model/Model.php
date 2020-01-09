@@ -68,8 +68,10 @@ class Model {
                 $queryString .= $key . ' = ' . '"'.$value. '"';
         }
 
-        foreach ($where as $key => $item) {
-            $queryString .= ' WHERE ' . $key . ' = ' . $item;
+        if (!empty($where)) {
+            foreach ($where as $key => $item) {
+                $queryString .= ' WHERE ' . $key . ' = ' . '"'.$item. '"';
+            }
         }
 
         $this->sendQuery($queryString);
@@ -103,6 +105,13 @@ class Model {
         $columnsToFetch = $this->getColumns(...$columns);
 
         $queryString = 'SELECT ' . $columnsToFetch . ' FROM '. $table;
+        return $this->sendQuery($queryString);
+    }
+
+    public function fetchMenuSortable($table, ...$columns) {
+        $columnsToFetch = $this->getColumns(...$columns);
+
+        $queryString = 'SELECT ' . $columnsToFetch . ' FROM '. $table . ' ORDER BY display_order';
         return $this->sendQuery($queryString);
     }
 

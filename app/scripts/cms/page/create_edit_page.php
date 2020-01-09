@@ -1,5 +1,5 @@
 <?php
-require_once '../../model/cms/Page.php';
+require_once '../../../model/cms/Page.php';
 
 if (!isset($_POST['page_name']) || empty($_POST['page_name'])) {
     $_SESSION['createPageError'] = 'Wprowadź nazwę strony!';
